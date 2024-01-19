@@ -1,0 +1,16 @@
+services:
+  palworld:
+    #image: cm2network/steamcmd:latest
+    build: .
+    container_name: palworld
+    environment:
+      - STEAM_USERNAME=lavenblade
+    volumes:
+      - userdata:/home/steam/Steam
+      - data:/home/steam/Steam/steamapps/common/PalServer
+
+volumes:
+  data:
+    name: palworld_data
+  userdata:
+    name: palworld_userdata
