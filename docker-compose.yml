@@ -3,11 +3,18 @@ services:
     #image: cm2network/steamcmd:latest
     build: .
     container_name: palworld
+    network_mode: host
+    user: 1000:1000
     environment:
       - STEAM_USERNAME=lavenblade
+    ports:
+      - 8211:8211
+      - 15636:15636
+      - 15637:15637
     volumes:
       - userdata:/home/steam/Steam
       - data:/home/steam/Steam/steamapps/common/PalServer
+    restart: unless-stopped
 
 volumes:
   data:
