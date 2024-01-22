@@ -1,4 +1,5 @@
 FROM cm2network/steamcmd
+LABEL org.opencontainers.image.source https://github.com/douglasparker/palworld
 ENV STEAM_PATH=${HOME}/.steam/steam
 ENV GAME_PATH=${STEAM_PATH}/steamapps/common/PalServer
 
