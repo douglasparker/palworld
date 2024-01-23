@@ -4,7 +4,7 @@ A docker container for easy deployment and configuration of a [Palworld](https:/
 
 ## Server Setup
 
-### Login as Steam user
+### 1) Login as Steam user
 
 > [!IMPORTANT]  
 > Palworld dedicated servers can only be setup by a user that has already purchased Palworld.
@@ -15,9 +15,9 @@ docker run --rm -it \
     cm2network/steamcmd ./steamcmd.sh +login <username> +quit
 ```
 
-### Start the Palworld server
+### 2) Start the Palworld server
 
-#### Docker Run (Easy)
+#### Docker Run
 ```docker
 docker run \
     --name palworld \
