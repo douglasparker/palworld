@@ -39,6 +39,10 @@ if [[ ${SERVER_DESCRIPTION+x} ]]; then
     sed -i 's/ServerDescription=.*,/ServerDescription='$SERVER_DESCRIPTION',/g' /home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
 fi
 
+if [[ ${SERVER_PORT+x} ]]; then
+    sed -i 's/PublicPort=.*,/PublicPort='$SERVER_PORT',/g' /home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
+fi
+
 # Palworld Server: Start
 
 eval /home/steam/Steam/steamapps/common/PalServer/PalServer.sh &
