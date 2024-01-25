@@ -4,6 +4,7 @@
 
 ./steamcmd.sh +login $STEAM_USERNAME +app_update 2394010 validate +quit
 
+DEFAULT_PALWORLD_SETTINGS="/home/steam/Steam/steamapps/common/PalServer/DefaultPalWorldSettings.ini"
 PALWORLD_SETTINGS="/home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini"
 
 # Palworld Server: First time initialization
@@ -23,6 +24,8 @@ if [ ! -f $PALWORLD_SETTINGS ]; then
 
     echo "Palworld has successfully started."
 
+    cp -p $DEFAULT_PALWORLD_SETTINGS $PALWORLD_SETTINGS
+
     echo "Shutting down Palworld Server..."
     kill $SERVER_PID
     sleep 5
@@ -32,11 +35,11 @@ fi
 # Palworld Server: Update Server Settings
 
 if [[ ${SERVER_NAME+x} ]]; then
-    sed -i 's/ServerName=.*,/ServerName='$SERVER_NAME',/g' /home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
+    sed -i 's/ServerName=.*,/ServerName="'$SERVER_NAME'",/g' /home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
 fi
 
 if [[ ${SERVER_DESCRIPTION+x} ]]; then
-    sed -i 's/ServerDescription=.*,/ServerDescription='$SERVER_DESCRIPTION',/g' /home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
+    sed -i 's/ServerDescription=.*,/ServerDescription="'$SERVER_DESCRIPTION'",/g' /home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
 fi
 
 if [[ ${SERVER_PORT+x} ]]; then

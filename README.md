@@ -2,6 +2,9 @@
 
 A docker container for easy deployment and configuration of a [Palworld](https://store.steampowered.com/app/1623730/Palworld/) dedicated server.
 
+> [!WARNING]
+> This docker image is a work in progress and may have bugs.
+
 ## Server Setup
 
 ### 1) Login as Steam user
