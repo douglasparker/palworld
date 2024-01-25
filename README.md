@@ -58,3 +58,12 @@ volumes:
   userdata:
     name: palworld_userdata
 ```
+
+## Server Configuration
+
+You can use the following environmental variables to further customize your server:
+
+| Environmental Variable | Value | Description |
+| ---------------------- | ----- | ----------- |
+| `SERVER_NAME`          | `string` | Sets the name on the server browser list. |
+| `SERVER_DESCRIPTION`   | `string` | Display a brief summary of what players can expect from your server on the in-game server list. |
