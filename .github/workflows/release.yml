@@ -3,6 +3,9 @@ name: Release
 on:
   workflow_dispatch:
 
+permissions:
+  packages: write
+
 env:
   REGISTRY: ghcr.io
   REGISTRY_USERNAME: ${{ github.actor }}
