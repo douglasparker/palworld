@@ -18,7 +18,7 @@ for V in STRING_SETTINGS:
         config_start = contents.index(f"{V}=")
         config_end = contents.index(",", config_start)
 
-        contents = contents.replace(contents[config_start:config_end], f'{V}="{os.environ[V]}"')
+        contents = contents.replace(contents[config_start:config_end], f'{V}={os.environ[V]}')
 
         with open(PALWORLD_SETTINGS, "w") as file:
             file.write(contents)
