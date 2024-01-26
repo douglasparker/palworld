@@ -32,6 +32,7 @@ docker run \
     --publish 15637:15637 \
     --volume palworld_userdata:/home/steam/Steam \
     --volume palworld_data:/home/steam/Steam/steamapps/common/PalServer \
+    --restart unless-stopped \
     ghcr.io/douglasparker/palworld:latest
 ```
 
