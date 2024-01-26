@@ -34,21 +34,22 @@ fi
 
 # Palworld Server: Update Server Settings
 
-if [[ ${SERVER_NAME+x} ]]; then
-    sed -i 's/ServerName=.*,/ServerName="'$SERVER_NAME'",/g' /home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
-fi
+declare -a STRING_CONFIGS=("ServerName" "ServerDescription" "AdminPassword" "ServerPassword" "PublicIP" "Region" "BanListURL")
+declare -a NON_STRING_CONFIGS=("Difficulty" "DayTimeSpeedRate" "NightTimeSpeedRate" "ExpRate" "PalCaptureRate" "PalSpawnNumRate" "PalDamageRateAttack" "PalDamageRateDefense" "PlayerDamageRateAttack" "PlayerDamageRateDefense" "PlayerStomachDecreaceRate" "PlayerStaminaDecreaceRate" "PlayerAutoHPRegeneRate" "PlayerAutoHpRegeneRateInSleep" "PalStomachDecreaceRate" "PalStaminaDecreaceRate" "PalAutoHPRegeneRate" "PalAutoHpRegeneRateInSleep" "BuildObjectDamageRate" "BuildObjectDeteriorationDamageRate" "CollectionDropRate" "CollectionObjectHpRate" "CollectionObjectRespawnSpeedRate" "EnemyDropItemRate" "DeathPenalty" "bEnablePlayerToPlayerDamage" "bEnableFriendlyFire" "bEnableInvaderEnemy" "bActiveUNKO" "bEnableAimAssistPad" "bEnableAimAssistKeyboard" "DropItemMaxNum" "DropItemMaxNum_UNKO" "BaseCampMaxNum" "BaseCampWorkerMaxNum" "DropItemAliveMaxHours" "bAutoResetGuildNoOnlinePlayers" "AutoResetGuildTimeNoOnlinePlayers" "GuildPlayerMaxNum" "PalEggDefaultHatchingTime" "WorkSpeedRate" "bIsMultiplay" "bIsPvP" "bCanPickupOtherGuildDeathPenaltyDrop" "bEnableNonLoginPenalty" "bEnableFastTravel" "bIsStartLocationSelectByMap" "bExistPlayerAfterLogout" "bEnableDefenseOtherGuildPlayer" "CoopPlayerMaxNum" "ServerPlayerMaxNum" "PublicPort" "RCONEnabled" "RCONPort" "bUseAuth")
 
-if [[ ${SERVER_DESCRIPTION+x} ]]; then
-    sed -i 's/ServerDescription=.*,/ServerDescription="'$SERVER_DESCRIPTION'",/g' /home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
-fi
+for CONFIG in ${STRING_CONFIGS[@]}
+do
+    if [[ ${!CONFIG+x} ]]; then
+        sed -i "s/$CONFIG=.*,/$CONFIG=\"${!CONFIG}\",/g" /home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
+    fi
+done
 
-if [[ ${SERVER_PORT+x} ]]; then
-    sed -i 's/PublicPort=.*,/PublicPort='$SERVER_PORT',/g' /home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
-fi
-
-if [[ ${PAL_EGG_HATCHING_TIME+x} ]]; then
-    sed -i 's/PalEggDefaultHatchingTime=.*,/PalEggDefaultHatchingTime='$PAL_EGG_HATCHING_TIME',/g' /home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
-fi
+for CONFIG in ${NON_STRING_CONFIGS[@]}
+do
+    if [[ ${!CONFIG+x} ]]; then
+        sed -i "s/$CONFIG=.*,/$CONFIG=${!CONFIG},/g" /home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
+    fi
+done
 
 # Palworld Server: Start
 
