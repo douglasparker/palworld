@@ -27,6 +27,7 @@ docker run \
     --net host \
     --user 1000:1000 \
     --env STEAM_USERNAME=<username> \
+    --env ServerName="My Palworld" \
     --publish 8211:8211 \
     --publish 15636:15636 \
     --publish 15637:15637 \
@@ -47,6 +48,7 @@ services:
     user: 1000:1000
     environment:
       - STEAM_USERNAME=<username>
+      - ServerName="My Palworld"
     ports:
       - 8211:8211
       - 15636:15636
@@ -65,11 +67,6 @@ volumes:
 
 ## Server Configuration
 
-You can use the following environmental variables to further customize your server:
+A list of the current Palworld server settings can be found [here](https://palworldforum.com/t/palworld-server-settings/91).
 
-| Environmental Variable  | Value     | Description                                                                                     |
-| ----------------------- | --------- | ----------------------------------------------------------------------------------------------- |
-| `SERVER_NAME`           | `string`  | Sets the name on the server browser list.                                                       |
-| `SERVER_DESCRIPTION`    | `string`  | Display a brief summary of what players can expect from your server on the in-game server list. |
-| `SERVER_PORT`           | `integer` | The port number Palworld will be listening on.                                                  |
-| `PAL_EGG_HATCHING_TIME` | `float`   | How long it will take to hatch eggs in an incubator.                                            |
+You can use docker environmental variables to further customize your server. The docker environmental variables use the same names as the palworld server settings.
