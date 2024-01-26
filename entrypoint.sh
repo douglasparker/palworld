@@ -40,6 +40,7 @@ declare -a NON_STRING_CONFIGS=("Difficulty" "DayTimeSpeedRate" "NightTimeSpeedRa
 for CONFIG in ${STRING_CONFIGS[@]}
 do
     if [[ ${!CONFIG+x} ]]; then
+        echo "Updating configuration: $CONFIG=\"${!CONFIG}\""
         sed -i "s/$CONFIG=.*,/$CONFIG=\"${!CONFIG}\",/g" /home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
     fi
 done
@@ -47,6 +48,7 @@ done
 for CONFIG in ${NON_STRING_CONFIGS[@]}
 do
     if [[ ${!CONFIG+x} ]]; then
+        echo "Updating configuration: $CONFIG=${!CONFIG}"
         sed -i "s/$CONFIG=.*,/$CONFIG=${!CONFIG},/g" /home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
     fi
 done
