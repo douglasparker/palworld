@@ -35,24 +35,7 @@ fi
 
 # Palworld Server: Update Server Settings
 
-declare -a STRING_CONFIGS=("ServerName" "ServerDescription" "AdminPassword" "ServerPassword" "PublicIP" "Region" "BanListURL")
-declare -a NON_STRING_CONFIGS=("Difficulty" "DayTimeSpeedRate" "NightTimeSpeedRate" "ExpRate" "PalCaptureRate" "PalSpawnNumRate" "PalDamageRateAttack" "PalDamageRateDefense" "PlayerDamageRateAttack" "PlayerDamageRateDefense" "PlayerStomachDecreaceRate" "PlayerStaminaDecreaceRate" "PlayerAutoHPRegeneRate" "PlayerAutoHpRegeneRateInSleep" "PalStomachDecreaceRate" "PalStaminaDecreaceRate" "PalAutoHPRegeneRate" "PalAutoHpRegeneRateInSleep" "BuildObjectDamageRate" "BuildObjectDeteriorationDamageRate" "CollectionDropRate" "CollectionObjectHpRate" "CollectionObjectRespawnSpeedRate" "EnemyDropItemRate" "DeathPenalty" "bEnablePlayerToPlayerDamage" "bEnableFriendlyFire" "bEnableInvaderEnemy" "bActiveUNKO" "bEnableAimAssistPad" "bEnableAimAssistKeyboard" "DropItemMaxNum" "DropItemMaxNum_UNKO" "BaseCampMaxNum" "BaseCampWorkerMaxNum" "DropItemAliveMaxHours" "bAutoResetGuildNoOnlinePlayers" "AutoResetGuildTimeNoOnlinePlayers" "GuildPlayerMaxNum" "PalEggDefaultHatchingTime" "WorkSpeedRate" "bIsMultiplay" "bIsPvP" "bCanPickupOtherGuildDeathPenaltyDrop" "bEnableNonLoginPenalty" "bEnableFastTravel" "bIsStartLocationSelectByMap" "bExistPlayerAfterLogout" "bEnableDefenseOtherGuildPlayer" "CoopPlayerMaxNum" "ServerPlayerMaxNum" "PublicPort" "RCONEnabled" "RCONPort" "bUseAuth")
-
-for CONFIG in ${STRING_CONFIGS[@]}
-do
-    if [[ ${!CONFIG+x} ]]; then
-        echo "Updating configuration: $CONFIG=${!CONFIG}"
-        sed -i "s/$CONFIG=.*,/$CONFIG=${!CONFIG},/g" /home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
-    fi
-done
-
-for CONFIG in ${NON_STRING_CONFIGS[@]}
-do
-    if [[ ${!CONFIG+x} ]]; then
-        echo "Updating configuration: $CONFIG=${!CONFIG}"
-        sed -i "s/$CONFIG=.*,/$CONFIG=${!CONFIG},/g" /home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
-    fi
-done
+python3 /home/steam/config.py
 
 # Palworld Server: Start
 

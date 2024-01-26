@@ -8,5 +8,6 @@ RUN mkdir -p /home/steam/Steam/steamapps/common/PalServer && chown steam:steam /
 USER steam
 
 COPY --chown=steam:steam entrypoint.sh /home/steam/entrypoint.sh
+COPY --chown=steam:steam config.py /home/steam/config.py
 WORKDIR $HOME
 ENTRYPOINT ["/home/steam/entrypoint.sh"]
