@@ -19,6 +19,7 @@ if [ ! -f $PALWORLD_SETTINGS ]; then
 
     while [ ! -f $PALWORLD_SETTINGS ]
     do
+        cp -p "$DEFAULT_PALWORLD_SETTINGS" "$PALWORLD_SETTINGS"
         sleep 1
     done
 
