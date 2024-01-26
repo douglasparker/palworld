@@ -66,8 +66,9 @@ volumes:
 
 You can use the following environmental variables to further customize your server:
 
-| Environmental Variable | Value     | Description                                                                                     |
-| ---------------------- | --------- | ----------------------------------------------------------------------------------------------- |
-| `SERVER_NAME`          | `string`  | Sets the name on the server browser list.                                                       |
-| `SERVER_DESCRIPTION`   | `string`  | Display a brief summary of what players can expect from your server on the in-game server list. |
-| `SERVER_PORT`          | `integer` | The port number Palworld will be listening on.                                                  |
+| Environmental Variable  | Value     | Description                                                                                     |
+| ----------------------- | --------- | ----------------------------------------------------------------------------------------------- |
+| `SERVER_NAME`           | `string`  | Sets the name on the server browser list.                                                       |
+| `SERVER_DESCRIPTION`    | `string`  | Display a brief summary of what players can expect from your server on the in-game server list. |
+| `SERVER_PORT`           | `integer` | The port number Palworld will be listening on.                                                  |
+| `PAL_EGG_HATCHING_TIME` | `float`   | How long it will take to hatch eggs in an incubator.                                            |
