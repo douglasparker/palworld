@@ -46,6 +46,10 @@ if [[ ${SERVER_PORT+x} ]]; then
     sed -i 's/PublicPort=.*,/PublicPort='$SERVER_PORT',/g' /home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
 fi
 
+if [[ ${PAL_EGG_HATCHING_TIME+x} ]]; then
+    sed -i 's/PalEggDefaultHatchingTime=.*,/PalEggDefaultHatchingTime='$PAL_EGG_HATCHING_TIME',/g' /home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
+fi
+
 # Palworld Server: Start
 
 eval /home/steam/Steam/steamapps/common/PalServer/PalServer.sh &
