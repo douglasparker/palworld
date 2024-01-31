@@ -9,10 +9,13 @@ A docker container for easy deployment and configuration of a [Palworld](https:/
 > [!IMPORTANT]  
 > Palworld dedicated servers can only be setup by a user that has already purchased Palworld.
 
+> [!TIP]
+> The Steam Guard code is optional.
+
 ```docker
 docker run --rm -it \
     -v "palworld_userdata:/home/steam/Steam" \
-    cm2network/steamcmd ./steamcmd.sh +login <username> +quit
+    cm2network/steamcmd ./steamcmd.sh +login <username> <password> <steam-guard-code> +quit
 ```
 
 ### 2) Start the Palworld server
