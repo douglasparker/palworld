@@ -1,0 +1,18 @@
+{
+    "enabled": true,
+    "baseBranches": ["main"],
+    "rangeStrategy": "bump",
+    "automerge": true,
+    "semanticCommits": true,
+    "semanticCommitType": "build",
+    "semanticCommitScope": "deps",
+    "assignees": ["@douglasparker"],
+    "additionalReviewers": ["@douglasparker"],
+    "labels": ["Priority/High", "Type/Dependency", "Category/Software"],
+    "vulnerabilityAlerts": {
+      "assignees": ["@douglasparker"],
+      "additionalReviewers": ["@douglasparker"],
+      "labels": ["Priority/Critical", "Type/Security", "Category/Software"],
+      "confidential": true
+    }
+}
