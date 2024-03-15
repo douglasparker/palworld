@@ -34,7 +34,7 @@ docker run \
     --volume palworld_userdata:/home/steam/Steam \
     --volume palworld_data:/home/steam/Steam/steamapps/common/PalServer \
     --restart unless-stopped \
-    code.douglasparker.dev/games/palworld:latest
+    registry.douglasparker.dev/games/palworld:latest
 ```
 
 #### Docker Compose (Recommended)
@@ -42,7 +42,7 @@ docker run \
 ```docker
 services:
   palworld:
-    image: code.douglasparker.dev/games/palworld:latest
+    image: registry.douglasparker.dev/games/palworld:latest
     container_name: palworld
     network_mode: host
     user: 1000:1000
