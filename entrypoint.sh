@@ -2,6 +2,14 @@
 
 # Palworld Server: Install, Update, and Validate
 
+if [[ "$(id -u)" -eq 0 ]] || [[ "$(id -g)" ]]; then
+    echo "[ERROR]: Running as root is not supported!"
+    exit 1
+fi
+
+usermod --non-unique --uid "$(id -u)" steam
+groupmod --non-unique --gid "$(id -g)" steam
+
 ./steamcmd.sh +login $STEAM_USERNAME +app_update 2394010 validate +quit
 
 DEFAULT_PALWORLD_SETTINGS="/home/steam/Steam/steamapps/common/PalServer/DefaultPalWorldSettings.ini"
