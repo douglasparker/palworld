@@ -2,13 +2,17 @@
 
 # Palworld Server: Install, Update, and Validate
 
-if [[ "$(id -u)" -eq 0 ]] || [[ "$(id -g)" ]]; then
+if [[ "$PUID" -eq 0 ]] || [[ "$PGID" -eq 0 ]]; then
     echo "[ERROR]: Running as root is not supported!"
     exit 1
 fi
 
-usermod --non-unique --uid "$(id -u)" steam
-groupmod --non-unique --gid "$(id -g)" steam
+echo "[INFO]: Executing usermod..."
+usermod --non-unique --uid "$($PUID -u)" steam
+groupmod --non-unique --gid "$($PGID -g)" steam
+
+su - steam
+echo "[INFO]: Running as $(whoami) with ID: $(id -u) and GID: $(id -g)."
 
 ./steamcmd.sh +login $STEAM_USERNAME +app_update 2394010 validate +quit
 

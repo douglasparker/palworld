@@ -25,11 +25,11 @@ docker run --rm -it \
 docker run \
     --name palworld \
     --net host \
-    --user 1000:1000 \
+    --env PUID=1000 \
+    --env PGID=1000
     --env STEAM_USERNAME=<username> \
     --env ServerName="My Palworld" \
     --publish 8211:8211 \
-    --publish 15636:15636 \
     --publish 15637:15637 \
     --volume palworld_userdata:/home/steam/Steam \
     --volume palworld_data:/home/steam/Steam/steamapps/common/PalServer \
@@ -45,13 +45,13 @@ services:
     image: registry.douglasparker.dev/games/palworld:latest
     container_name: palworld
     network_mode: host
-    user: 1000:1000
     environment:
+      - PUID=1000
+      - PGID=1000
       - STEAM_USERNAME=<username>
       - ServerName="My Palworld"
     ports:
       - 8211:8211
-      - 15636:15636
       - 15637:15637
     volumes:
       - userdata:/home/steam/Steam
