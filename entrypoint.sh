@@ -24,7 +24,7 @@ PALWORLD_SETTINGS="/home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config
 if [ ! -f $PALWORLD_SETTINGS ]; then
     echo "Starting Palworld Server..."
 
-    su steam -c eval /home/steam/Steam/steamapps/common/PalServer/PalServer.sh &
+    su steam -c 'eval /home/steam/Steam/steamapps/common/PalServer/PalServer.sh &'
     SERVER_PID=$!
 
     echo "[INFO]: Waiting for Palworld to start for the first time..."
@@ -50,12 +50,12 @@ fi
 # Palworld Server: Update Server Settings
 
 echo "[INFO]: Updating Palworld server settings..."
-su steam -c python3 /home/steam/config.py
+su steam -c 'python3 /home/steam/config.py'
 
 # Palworld Server: Start
 
 echo "[INFO]: Starting Palworld..."
-su steam -c eval /home/steam/Steam/steamapps/common/PalServer/PalServer.sh &
+su steam -c 'eval /home/steam/Steam/steamapps/common/PalServer/PalServer.sh &'
 SERVER_PID=$!
 wait $SERVER_PID
 exit $?
