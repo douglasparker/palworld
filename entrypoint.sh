@@ -10,8 +10,9 @@ fi
 echo "[INFO]: Executing usermod..."
 usermod --non-unique --uid "$PUID" steam
 groupmod --non-unique --gid "$PGID" steam
+chown -R steam:steam /home/steam
 
-su steam -c echo "[INFO]: Running as $(whoami) with ID: $(id -u) and GID: $(id -g)."
+su steam -c 'echo "[INFO]: Running as $(whoami) with ID: $(id -u) and GID: $(id -g)."'
 
 su steam -c ./steamcmd.sh +login $STEAM_USERNAME +app_update 2394010 validate +quit
 
