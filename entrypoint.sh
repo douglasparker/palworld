@@ -8,8 +8,8 @@ if [[ "$PUID" -eq 0 ]] || [[ "$PGID" -eq 0 ]]; then
 fi
 
 echo "[INFO]: Executing usermod..."
-usermod --non-unique --uid "$($PUID -u)" steam
-groupmod --non-unique --gid "$($PGID -g)" steam
+usermod --non-unique --uid "$PUID" steam
+groupmod --non-unique --gid "$PGID" steam
 
 su - steam
 echo "[INFO]: Running as $(whoami) with ID: $(id -u) and GID: $(id -g)."
