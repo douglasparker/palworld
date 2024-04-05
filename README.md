@@ -29,8 +29,8 @@ docker run \
     --env PGID=1000
     --env STEAM_USERNAME=<username> \
     --env ServerName="My Palworld" \
-    --publish 8211:8211 \
-    --publish 15637:15637 \
+    --publish 8211:8211/udp \
+    --publish 27015:27015/udp \
     --volume palworld_userdata:/home/steam/Steam \
     --volume palworld_data:/home/steam/Steam/steamapps/common/PalServer \
     --restart unless-stopped \
@@ -51,8 +51,8 @@ services:
       - STEAM_USERNAME=<username>
       - ServerName="My Palworld"
     ports:
-      - 8211:8211
-      - 15637:15637
+      - 8211:8211/udp
+      - 27015:27015/udp
     volumes:
       - userdata:/home/steam/Steam
       - data:/home/steam/Steam/steamapps/common/PalServer
