@@ -55,4 +55,4 @@ su steam -c 'python3 /home/steam/config.py'
 # Palworld Server: Start
 
 echo "[INFO]: Starting Palworld..."
-su steam -c "eval /home/steam/Steam/steamapps/common/PalServer/PalServer.sh &; SERVER_PID=$!; wait $SERVER_PID; exit $?"
+su steam -c "eval /home/steam/Steam/steamapps/common/PalServer/PalServer.sh & ; SERVER_PID=$! ; wait $SERVER_PID ; exit $?"
