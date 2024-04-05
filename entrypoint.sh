@@ -27,7 +27,7 @@ if [ ! -f $PALWORLD_SETTINGS ]; then
     su steam -c eval /home/steam/Steam/steamapps/common/PalServer/PalServer.sh &
     SERVER_PID=$!
 
-    echo "Waiting for Palworld to start for the first time..."
+    echo "[INFO]: Waiting for Palworld to start for the first time..."
 
     while [ ! -f $PALWORLD_SETTINGS ]
     do
@@ -35,22 +35,26 @@ if [ ! -f $PALWORLD_SETTINGS ]; then
         sleep 1
     done
 
-    echo "Palworld has successfully started."
+    echo "[INFO]: Palworld has successfully started."
+
+    echo "[INFO]: Generating default Palworld server settings..."
 
     cp -p $DEFAULT_PALWORLD_SETTINGS $PALWORLD_SETTINGS
 
-    echo "Shutting down Palworld Server..."
+    echo "[INFO]: Shutting down Palworld Server..."
     kill $SERVER_PID
     sleep 5
-    echo "Palworld Server has shut down successfully."
+    echo "[INFO]: Palworld Server has shut down successfully."
 fi
 
 # Palworld Server: Update Server Settings
 
+echo "[INFO]: Updating Palworld server settings..."
 su steam -c python3 /home/steam/config.py
 
 # Palworld Server: Start
 
+echo "[INFO]: Starting Palworld..."
 su steam -c eval /home/steam/Steam/steamapps/common/PalServer/PalServer.sh &
 SERVER_PID=$!
 wait $SERVER_PID
