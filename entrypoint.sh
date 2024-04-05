@@ -14,7 +14,7 @@ chown -R steam:steam /home/steam
 
 su steam -c 'echo "[INFO]: Running as $(whoami) with ID: $(id -u) and GID: $(id -g)."'
 
-su steam -c ./steamcmd.sh +login $STEAM_USERNAME +app_update 2394010 validate +quit
+su steam -c './steamcmd.sh +login $STEAM_USERNAME +app_update 2394010 validate +quit'
 
 DEFAULT_PALWORLD_SETTINGS="/home/steam/Steam/steamapps/common/PalServer/DefaultPalWorldSettings.ini"
 PALWORLD_SETTINGS="/home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini"
