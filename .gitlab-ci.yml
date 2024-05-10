@@ -1,0 +1,14 @@
+include:
+  - component: code.neureka.dev/components/docker/build@1.0.1
+    inputs:
+      rules:
+        - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      tags:
+        - latest
+      push: true
+  - component: code.neureka.dev/components/docker/push@1.0.1
+    inputs:
+      rules:
+        - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      tags:
+        - latest
